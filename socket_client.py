@@ -6,6 +6,7 @@ HOST = '47.93.204.170'
 PORT = 8080
 from scapy.all import *
 from sys import argv
+import time
 
 def syn_scan(host,port,filename,id):
 	f = open(filename,"rb")
@@ -25,6 +26,7 @@ def syn_scan(host,port,filename,id):
 			if a==None:
 				continue
 			ff.write(str(t)+"\t"+str(255-a.ttl)+"\t"+line)
+			time.sleep(3)
 	f.close()
 	ff.close()
 
