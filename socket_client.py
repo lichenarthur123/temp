@@ -18,10 +18,12 @@ def syn_scan(host,port,filename,id):
 		for j in range(50):
 			print ip
 			t = datetime.utcnow()
-			a = sr1(IP(dst=ip)/TCP(dport=port,flags="S"))
+			a = sr1(IP(dst=ip)/TCP(dport=port,flags="S"),timeout=1)
 			t = datetime.utcnow() - t
 			t = t.total_seconds()*1000
 			#print (t,255-a.ttl)
+			if a==None:
+				continue
 			ff.write(str(t)+"\t"+str(255-a.ttl)+"\t"+line)
 	f.close()
 	ff.close()
