@@ -16,7 +16,7 @@ def syn_scan(host,port,filename,id):
 		ip = i.split(" ")[0]
 		port = int(i.split(" ")[2][0:-2])
 		print line
-		for j in range(50):
+		for j in range(10):
 			print ip
 			t = datetime.utcnow()
 			a = sr1(IP(dst=ip)/TCP(dport=port,flags="S"),timeout=1)
